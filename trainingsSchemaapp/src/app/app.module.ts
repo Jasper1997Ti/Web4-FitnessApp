@@ -9,6 +9,7 @@ import { MatListModule, MatCardModule, MatIconModule, MatFormFieldModule, MatInp
 import { AddTrainingsSchemaComponent } from './add-trainings-schema/add-trainings-schema.component';
 import { TrainingsSchemaFilterPipe } from './trainings-schema-filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
      MatListModule,
