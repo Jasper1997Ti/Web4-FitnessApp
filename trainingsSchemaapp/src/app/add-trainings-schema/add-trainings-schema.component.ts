@@ -1,12 +1,10 @@
 import { Exercise } from './../exercise.model';
 import { TrainingsSchema } from './../trainingsSchema.model';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray } from '@angular/forms';
-import { Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-function validateExerciseName(control: FormGroup)
-  : { [key: string]: any } {
+function validateExerciseName(control: FormGroup) : { [key: string]: any } {
     if (
       control.get('sets').value.length >= 1 &&
       control.get('name').value.length < 2
@@ -23,10 +21,14 @@ function validateExerciseName(control: FormGroup)
 })
 
 export class AddTrainingsSchemaComponent implements OnInit {
+  @Output() public newTrainingsSchema = new EventEmitter<TrainingsSchema>();
   public trainingsSchema : FormGroup;
 
-  @Output() public newTrainingsSchema = new EventEmitter<TrainingsSchema>();
   constructor(private fb: FormBuilder) {}
+
+  get exercises() : FormArray {
+    return <FormArray>this.trainingsSchema.get('exercises');
+  }
 
   ngOnInit() {
     this.trainingsSchema = this.fb.group({
@@ -37,7 +39,8 @@ export class AddTrainingsSchemaComponent implements OnInit {
 
     this.exercises.valueChanges
     .pipe(
-      debounceTime(400), distinctUntilChanged())
+      debounceTime(400), 
+      distinctUntilChanged())
       .subscribe(exList => {
         const lastElement = exList[exList.length - 1];
         if ( lastElement.name && lastElement.name.length > 2 ) { 
@@ -57,9 +60,9 @@ export class AddTrainingsSchemaComponent implements OnInit {
 
   createExercises(): FormGroup {
     return this.fb.group({
+      name: [''],
       sets: [''],
-      reps: [''],
-      name: ['']
+      reps: ['']      
     },
   {validator: validateExerciseName});
   }
@@ -90,7 +93,5 @@ getErrorMessage(errors: any) {
   
 }
 
-get exercises() : FormArray {
-  return <FormArray>this.trainingsSchema.get('exercises');
-}
+
 }

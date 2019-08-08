@@ -1,7 +1,7 @@
 <mat-card>
     <mat-card-title>add trainingsSchema</mat-card-title>
 <mat-card-content>
-<form [formgroup] = "trainingsSchema" (ngSubmit)="onSubmit()">
+<form [formGroup] = "trainingsSchema" (ngSubmit)="onSubmit()">
   <mat-form-field>
     <input 
     matInput 
@@ -34,20 +34,33 @@
        {{ getErrorMessage(trainingsSchema.get('categorie')['errors']) }}
        </mat-error>
   </mat-form-field>
+  
   <div formArrayName="exercises"
-  *ngFor="let item of trainingsSchema.get('exercises')['controls']; let i = index">
+  *ngFor="let item of exercises.controls; let i = index">
   <div [formGroupName]="i">
     <mat-form-field>
-      <input matInput type="text" aria-label="exercise sets"
-        placeholder="sets" formControlName="sets"/>
+      <input 
+      matInput 
+      placeholder="name" 
+      aria-label="exercise name"
+        type="text" 
+        formControlName="name"/>
     </mat-form-field>
     <mat-form-field>
-        <input matInput type="text" aria-label="exercise reps"
-        placeholder="reps" formControlName="reps"/>
+      <input
+       matInput 
+       type="text" 
+       aria-label="exercise sets"
+        placeholder="sets" 
+        formControlName="sets"/>
     </mat-form-field>
     <mat-form-field>
-      <input matInput placeholder="name" aria-label="exercise name"
-        type="text" formControlName="name"/>
+        <input 
+        matInput 
+        type="text" 
+        aria-label="exercise reps"
+        placeholder="reps" 
+        formControlName="reps"/>
     </mat-form-field>
   </div>
   <mat-error *ngIf="item.errors && item.get('name').touched">
