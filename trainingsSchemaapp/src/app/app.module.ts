@@ -2,34 +2,26 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { TrainingsSchemaComponent } from './trainings-schema/trainings-schema.component';
-import { ExerciseComponent } from './exercise/exercise.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatListModule, MatCardModule, MatIconModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule} from '@angular/material';
-import { AddTrainingsSchemaComponent } from './add-trainings-schema/add-trainings-schema.component';
-import { TrainingsSchemaFilterPipe } from './trainings-schema-filter.pipe';
-import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TrainingsSchemaModule } from './trainings-schema/trainings-schema.module';
+import { MaterialModule } from './material/material.module';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrainingsSchemaComponent,
-    ExerciseComponent,
-    AddTrainingsSchemaComponent,
-    TrainingsSchemaFilterPipe
+    MainNavComponent,
+    PageNotFoundComponent    
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
     BrowserAnimationsModule,
-     MatListModule,
-     MatCardModule,
-     MatIconModule,
-     MatFormFieldModule,
-     MatProgressSpinnerModule
+     AppRoutingModule,
+     TrainingsSchemaModule,
+     MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

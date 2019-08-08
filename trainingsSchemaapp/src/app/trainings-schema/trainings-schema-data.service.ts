@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 import { TrainingsSchema } from './trainingsSchema.model';
-import { TRAININGSSCHEMAS } from './mock-trainingsSchema';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../environments/environment';
 import { Observable, Subject, of } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 import { delay, catchError } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

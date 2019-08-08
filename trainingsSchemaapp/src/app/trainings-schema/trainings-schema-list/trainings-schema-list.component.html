@@ -1,0 +1,35 @@
+<div fxLayout="column" fxLayoutGap="2%">
+<mat-card>
+  <mat-form-field>
+    <input matInput (keyup)='filterTrainingsSchema$.next($event.target.value)' placeholder="filter trainingsschema name" type="text"/>
+  </mat-form-field>
+
+</mat-card>
+<div *ngIf="(trainingsschemas$ | async) as trainingsschemas; else loadingOrError">
+
+<div fxLayout="row wrap"
+fxLayout.xs="column"
+fxLayoutGap="0.5%"
+fxLayoutAlign="start"
+>
+
+<div 
+    class="trainingsSchema"
+    *ngFor="let trainingsSchema of (trainingsschemas | trainingsSchemaFilter: filterTrainingsSchemaName)"
+    fxFlex="0 0 calc(25%-0.5%)"
+    fxFlex.xs="100%"
+  >
+    <app-trainings-schema [trainingsSchema]="trainingsSchema"></app-trainings-schema>
+  </div>
+</div>
+</div>
+<ng-template #loadingOrError>
+  <mat-card>
+   <mat-error  *ngIf="(loadingError$ | async) as errorMessage; else loading">
+     Error loading the trainingsschema list: {{ errorMessage }}. <br/>
+      Please try again later.
+   </mat-error>
+    <ng-template #loading>Loading recipes... <br/> <mat-spinner></mat-spinner></ng-template>
+  </mat-card>
+</ng-template> 
+</div>

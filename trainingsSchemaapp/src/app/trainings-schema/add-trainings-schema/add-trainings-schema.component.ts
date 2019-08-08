@@ -1,3 +1,4 @@
+import { TrainingsSchemaDataService } from './../trainings-schema-data.service';
 import { Exercise } from './../exercise.model';
 import { TrainingsSchema } from './../trainingsSchema.model';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
@@ -21,10 +22,10 @@ function validateExerciseName(control: FormGroup) : { [key: string]: any } {
 })
 
 export class AddTrainingsSchemaComponent implements OnInit {
-  @Output() public newTrainingsSchema = new EventEmitter<TrainingsSchema>();
+
   public trainingsSchema : FormGroup;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private _trainingsSchemaDataService : TrainingsSchemaDataService) {}
 
   get exercises() : FormArray {
     return <FormArray>this.trainingsSchema.get('exercises');
@@ -70,7 +71,8 @@ export class AddTrainingsSchemaComponent implements OnInit {
   onSubmit(){
     let exercises = this.trainingsSchema.value.exercises.map(Exercise.fromJSON);
     exercises = exercises.filter(ex => ex.name.length > 2);
-    this.newTrainingsSchema.emit(new TrainingsSchema(this.trainingsSchema.value.name, this.trainingsSchema.value.categorie, exercises));
+
+    this._trainingsSchemaDataService.addNewTrainingsSchema(new TrainingsSchema(this.trainingsSchema.value.name, this.trainingsSchema.value.categorie, exercises )).subscribe();
   }
 
  /* addTrainingsSchema(trainingsSchemaName: HTMLInputElement, trainingsSchemaCat: HTMLInputElement): boolean {
@@ -92,6 +94,7 @@ getErrorMessage(errors: any) {
     }
   
 }
+
 
 
 }

@@ -1,5 +1,6 @@
 import { map } from 'rxjs/internal/operators/map';
 import { Exercise } from './exercise.model';
+
 export class TrainingsSchema {
     constructor(
       private _name: string,

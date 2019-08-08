@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
-import { distinctUntilChanged, debounceTime} from 'rxjs/operators';
-import { TrainingsSchema } from './trainings-schema/trainingsSchema.model';
-import { TrainingsSchemaDataService } from './trainings-schema/trainings-schema-data.service';
+import { TrainingsSchema } from '../trainingsSchema.model';
+import { TrainingsSchemaDataService } from '../trainings-schema-data.service';
+import { distinctUntilChanged } from 'rxjs/internal/operators/distinctUntilChanged';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-trainings-schema-list',
+  templateUrl: './trainings-schema-list.component.html',
+  styleUrls: ['./trainings-schema-list.component.css']
 })
-
-export class AppComponent {
+export class TrainingsSchemaListComponent implements OnInit {
   public filterTrainingsSchemaName : string;
   public filterTrainingsSchema$ = new Subject<string>();
   private _fetchTrainingsSchemas$: Observable<TrainingsSchema[]> 
@@ -25,6 +25,8 @@ export class AppComponent {
       val => this.filterTrainingsSchemaName = val);
   }
 
+  ngOnInit() {}
+
   applyFilter(filter: string){
     this.filterTrainingsSchemaName = filter;
   }
@@ -33,8 +35,9 @@ export class AppComponent {
     return this._fetchTrainingsSchemas$;
   }
 
-  addNewTrainingsSchema(trainingsSchema) {
-    this._trainingsSchemaDataService.addNewTrainingsSchema(trainingsSchema).subscribe();
-  }
+  // addNewTrainingsSchema(trainingsSchema) {
+  //   this._trainingsSchemaDataService.addNewTrainingsSchema(trainingsSchema).subscribe();
+  // }
+
 
 }

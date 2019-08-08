@@ -1,5 +1,5 @@
-import { TrainingsSchema } from './../trainingsSchema.model';
 import { Component, OnInit, Input } from '@angular/core';
+import { TrainingsSchema } from '../trainingsSchema.model';
 
 @Component({
   selector: 'app-trainings-schema',
