@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class TrainingsSchemaDataService {
+  
   public loadingError$ = new Subject<string>();
   constructor(private http: HttpClient){}
 
@@ -28,5 +29,14 @@ export class TrainingsSchemaDataService {
   addNewTrainingsSchema(trainingsSchema: TrainingsSchema) {
    // this._trainingsSchemas.push(trainingsSchema);
   return this.http.post(`${environment.apiUrl}/TrainingsSchema/`, trainingsSchema.toJSON());
+  }
+
+   getTrainingsSchema$(id) : Observable<TrainingsSchema>{
+     console.log(`${environment.apiUrl}/TrainingsSchema/${id}`);
+    return this.http.get(`${environment.apiUrl}/TrainingsSchema/${id}`).pipe(
+      map(
+        (item: any): TrainingsSchema => TrainingsSchema.fromJSON(item)          
+      )
+    );
   }
 }

@@ -8,6 +8,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material.module';
+import { TrainingsSchemaDetailComponent } from './trainings-schema-detail/trainings-schema-detail.component';
+import { Routes, RouterModule } from '@angular/router';
+
+const routes: Routes = [
+{ path: 'list', component: TrainingsSchemaComponent },
+  { path: 'add', component: AddTrainingsSchemaComponent },
+  { path: ':id', component: TrainingsSchemaDetailComponent}
+]
 
 @NgModule({
   declarations: [
@@ -15,13 +23,17 @@ import { MaterialModule } from '../material/material.module';
   ExerciseComponent,
   AddTrainingsSchemaComponent,
   TrainingsSchemaFilterPipe,
-  TrainingsSchemaListComponent
+  TrainingsSchemaListComponent,
+  TrainingsSchemaDetailComponent
   ],
   imports: [
     CommonModule,
     MaterialModule,
     HttpClientModule,    
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    RouterModule.forChild(routes)
+  ],
+  
+  providers: [HttpClientModule]
 })
 export class TrainingsSchemaModule { }
