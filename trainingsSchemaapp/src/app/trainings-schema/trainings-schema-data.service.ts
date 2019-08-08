@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { TrainingsSchema } from './trainingsSchema.model';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, of } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable, of, Subject } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
-import { delay, catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { TrainingsSchema } from './trainingsSchema.model';
 
 @Injectable({
   providedIn: 'root'

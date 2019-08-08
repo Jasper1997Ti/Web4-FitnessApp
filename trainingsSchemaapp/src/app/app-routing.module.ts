@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, Router, PreloadAllModules } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TrainingsSchemaComponent } from './trainings-schema/trainings-schema/trainings-schema.component';
-import { AddTrainingsSchemaComponent } from './trainings-schema/add-trainings-schema/add-trainings-schema.component';
-import { TrainingsSchemaDetailComponent } from './trainings-schema/trainings-schema-detail/trainings-schema-detail.component';
 
 const appRoutes: Routes = [
   {

@@ -1,7 +1,6 @@
-import { TrainingsSchemaDataService } from '../trainings-schema-data.service';
-import { TrainingsSchema } from '../trainingsSchema.model';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { TrainingsSchema } from '../trainingsSchema.model';
 
 @Component({
   selector: 'app-trainings-schema-detail',

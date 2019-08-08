@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatListModule ,MatButtonModule, MatInputModule, MatOptionModule, MatSelectModule, MatGridListModule, MatCardModule, MatIconModule, MatFormFieldModule, MatProgressSpinnerModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MatButtonModule, MatCardModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatListModule, MatOptionModule, MatProgressSpinnerModule, MatSelectModule, MatSidenavModule, MatToolbarModule } from '@angular/material';
 
 
 @NgModule({

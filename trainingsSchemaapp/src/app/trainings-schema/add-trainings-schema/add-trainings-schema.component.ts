@@ -1,9 +1,9 @@
-import { TrainingsSchemaDataService } from './../trainings-schema-data.service';
-import { Exercise } from './../exercise.model';
-import { TrainingsSchema } from './../trainingsSchema.model';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { Exercise } from './../exercise.model';
+import { TrainingsSchemaDataService } from './../trainings-schema-data.service';
+import { TrainingsSchema } from './../trainingsSchema.model';
 
 function validateExerciseName(control: FormGroup) : { [key: string]: any } {
     if (

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
-import { distinctUntilChanged, debounceTime} from 'rxjs/operators';
-import { TrainingsSchema } from './trainings-schema/trainingsSchema.model';
+import { Observable, Subject } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { TrainingsSchemaDataService } from './trainings-schema/trainings-schema-data.service';
+import { TrainingsSchema } from './trainings-schema/trainingsSchema.model';
 
 @Component({
   selector: 'app-root',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
-import { TrainingsSchema } from '../trainingsSchema.model';
-import { TrainingsSchemaDataService } from '../trainings-schema-data.service';
+import { Observable, Subject } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/internal/operators/distinctUntilChanged';
 import { debounceTime } from 'rxjs/operators';
+import { TrainingsSchemaDataService } from '../trainings-schema-data.service';
+import { TrainingsSchema } from '../trainingsSchema.model';
 
 @Component({
   selector: 'app-trainings-schema-list',
