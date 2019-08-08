@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes, Router } from '@angular/router';
+import { RouterModule, Routes, Router, PreloadAllModules } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TrainingsSchemaComponent } from './trainings-schema/trainings-schema/trainings-schema.component';
 import { AddTrainingsSchemaComponent } from './trainings-schema/add-trainings-schema/add-trainings-schema.component';
@@ -8,7 +8,8 @@ import { TrainingsSchemaDetailComponent } from './trainings-schema/trainings-sch
 const appRoutes: Routes = [
   {
     path: 'trainingsschema',
-    loadChildren: 'app/trainingsschema/trainings-schema.module#TrainingsSchemaModule'
+    loadChildren: './trainings-schema/trainings-schema.module#TrainingsSchemaModule',
+    data: { preload: true }
   },
   { path: '', redirectTo: 'trainingsschema/list', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent}
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [],
   imports: [
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes,
+      {preloadingStrategy: PreloadAllModules})
   ],
   exports: [
     RouterModule
