@@ -23,10 +23,11 @@ import { httpInterceptorProviders } from './interceptors';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    UserModule,
      TrainingsSchemaModule,
      MaterialModule,
-     AppRoutingModule,
-     UserModule
+     AppRoutingModule
+     
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
