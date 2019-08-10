@@ -8,6 +8,8 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { MaterialModule } from './material/material.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { TrainingsSchemaModule } from './trainings-schema/trainings-schema.module';
+import { UserModule } from './user/user.module';
+import { httpInterceptorProviders } from './interceptors';
 
 
 
@@ -23,9 +25,10 @@ import { TrainingsSchemaModule } from './trainings-schema/trainings-schema.modul
     HttpClientModule,
      TrainingsSchemaModule,
      MaterialModule,
-     AppRoutingModule
+     AppRoutingModule,
+     UserModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

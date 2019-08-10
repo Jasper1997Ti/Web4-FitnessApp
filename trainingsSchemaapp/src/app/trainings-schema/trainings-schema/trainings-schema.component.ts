@@ -1,5 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { TrainingsSchema } from '../trainingsSchema.model';
+import { TrainingsSchemaDataService } from '../trainings-schema-data.service';
+import { RatingComponent } from 'src/app/rating/rating.component';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-trainings-schema',
@@ -9,12 +12,24 @@ import { TrainingsSchema } from '../trainingsSchema.model';
 export class TrainingsSchemaComponent implements OnInit {
 
   @Input() public trainingsSchema: TrainingsSchema;
+  @ViewChild('ratingComponent', {static : false}) public ratingComp: RatingComponent;
 
-  constructor() {
-
-   }
+  constructor(private _trainingsSchemaDataService: TrainingsSchemaDataService) {}
 
   ngOnInit() {
-  }
-
+    this.ratingComp.ratingChange$
+      .pipe(
+        switchMap(newRating => {
+          return this._trainingsSchemaDataService.rateTrainingsSchema(this.trainingsSchema, newRating);
+        })
+      )
+      .subscribe(
+        (newRating: number) => {
+          this.trainingsSchema.rating = newRating;
+        },
+        () => {
+          this.trainingsSchema.rating = 0;
+        }
+      );
+}
 }

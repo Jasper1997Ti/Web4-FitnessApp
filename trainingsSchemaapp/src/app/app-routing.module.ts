@@ -1,10 +1,13 @@
+import { MaterialModule } from './material/material.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthGuardGuard } from './user/auth-guard.guard';
 
 const appRoutes: Routes = [
   {
     path: 'trainingsschema',
+    canActivate: [AuthGuardGuard],
     loadChildren: './trainings-schema/trainings-schema.module#TrainingsSchemaModule',
     data: { preload: true }
   },
@@ -16,7 +19,8 @@ const appRoutes: Routes = [
   declarations: [],
   imports: [
     RouterModule.forRoot(appRoutes,
-      {preloadingStrategy: PreloadAllModules})
+      {preloadingStrategy: PreloadAllModules}),
+      MaterialModule
   ],
   exports: [
     RouterModule

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/internal/operators/distinctUntilChanged';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, switchMap } from 'rxjs/operators';
 import { TrainingsSchemaDataService } from '../trainings-schema-data.service';
 import { TrainingsSchema } from '../trainingsSchema.model';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-trainings-schema-list',
@@ -11,33 +12,59 @@ import { TrainingsSchema } from '../trainingsSchema.model';
   styleUrls: ['./trainings-schema-list.component.css']
 })
 export class TrainingsSchemaListComponent implements OnInit {
-  public filterTrainingsSchemaName : string;
+  public trainingsSchemas : TrainingsSchema[];
+  public filterTrainingsSchemaName : string ='';
   public filterTrainingsSchema$ = new Subject<string>();
   private _fetchTrainingsSchemas$: Observable<TrainingsSchema[]> 
     = this._trainingsSchemaDataService.trainingsschemas$;
     public loadingError$ = this._trainingsSchemaDataService.loadingError$;
 
-  constructor(private _trainingsSchemaDataService: TrainingsSchemaDataService){
-    this.filterTrainingsSchema$.pipe(
-      distinctUntilChanged(),
-      debounceTime(300))
-    .subscribe(
-      val => this.filterTrainingsSchemaName = val);
-  }
+    constructor(
+      private _trainingsSchemaDataService: TrainingsSchemaDataService,
+      private _router: Router,
+      private _route: ActivatedRoute
+    ) {}
+  
+    ngOnInit() {
+      this.filterTrainingsSchema$
+        .pipe(
+          distinctUntilChanged(),
+          debounceTime(400)
+      ).subscribe(val => {
+        const params = val ? { queryParams: { filter: val } } : undefined;
+        this._router.navigate(['/TrainingsSchema/list'], params);
+      });
 
-  ngOnInit() {}
 
-  applyFilter(filter: string){
-    this.filterTrainingsSchemaName = filter;
-  }
+      this._route.queryParams
+      .pipe(
+        switchMap(newParams => {
+          // set the value of the input field with the url parameter as well
+          if (newParams['filter']) {
+            this.filterTrainingsSchemaName = newParams['filter'];
+          }
+          // when the queryparameter changes, take the filter parameter and use it to ask
+          // the service for all recipes with this filter in their name
+          // this._recipeDataService.getRecipes$(params['filter']).subscribe(
+          return this._trainingsSchemaDataService.getTrainingsSchemas$(newParams['filter']);
+        })
+      )
+      .subscribe(val => {
+        this.trainingsSchemas = val;
+        // once the trainingsSchemas are received, we ask for all the ratings of these trainingsSchemas
+        // and update the trainingsSchemas with them
+        this._trainingsSchemaDataService
+          .getTrainingsSchemaRatings(this.trainingsSchemas)
+          .subscribe((ratingList: any[]) => {
+            for (const oneRating of ratingList) {
+              const { id, rating } = oneRating;
+              this.trainingsSchemas.find(rec => rec.id === id).rating = rating;
+            }
+          });
+      });
+    }
 
   get trainingsschemas$() : Observable<TrainingsSchema[]>{
     return this._fetchTrainingsSchemas$;
   }
-
-  // addNewTrainingsSchema(trainingsSchema) {
-  //   this._trainingsSchemaDataService.addNewTrainingsSchema(trainingsSchema).subscribe();
-  // }
-
-
 }

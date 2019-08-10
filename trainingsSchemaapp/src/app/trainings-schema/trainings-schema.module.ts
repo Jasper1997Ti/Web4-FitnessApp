@@ -10,6 +10,7 @@ import { TrainingsSchemaDetailComponent } from './trainings-schema-detail/traini
 import { TrainingsSchemaFilterPipe } from './trainings-schema-filter.pipe';
 import { TrainingsSchemaListComponent } from './trainings-schema-list/trainings-schema-list.component';
 import { TrainingsSchemaComponent } from './trainings-schema/trainings-schema.component';
+import { RatingComponent } from '../rating/rating.component';
 
 const routes: Routes = [
 { path: 'list', component: TrainingsSchemaComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   AddTrainingsSchemaComponent,
   TrainingsSchemaFilterPipe,
   TrainingsSchemaListComponent,
-  TrainingsSchemaDetailComponent
+  TrainingsSchemaDetailComponent,
+  RatingComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   
-  providers: [HttpClientModule]
+  providers: []
 })
 export class TrainingsSchemaModule { }
