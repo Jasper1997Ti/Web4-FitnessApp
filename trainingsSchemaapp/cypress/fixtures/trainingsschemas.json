@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Chest",
+    "created": "2019-08-10T09:55:25.664459",
+    "categorie": "Bulk",
+    "exercises": [
+      {
+        "id": 1,
+        "name": "Incline DB",
+        "sets": 3,
+        "reps": 8
+      },
+      {
+        "id": 2,
+        "name": "Flyes",
+        "sets": 4,
+        "reps": 12
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Back",
+    "created": "2019-08-10T09:55:25.6644943",
+    "categorie": null,
+    "exercises": [
+      {
+        "id": 3,
+        "name": "Lat Pulldown",
+        "sets": 4,
+        "reps": 10
+      }
+    ]
+  }
+]

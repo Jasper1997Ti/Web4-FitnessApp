@@ -10,6 +10,7 @@
     type="text" 
     formControlName= "name"
     required
+    data-cy = "tname"
      />
      <mat-error
           *ngIf="trainingsSchema.get('name')['errors'] && 
@@ -26,6 +27,7 @@
     type="text" 
     formControlName="categorie"
     required
+    data-cy = "categorie"
          />
          <mat-error
          *ngIf="trainingsSchema.get('categorie')['errors'] && 
@@ -44,7 +46,8 @@
       placeholder="name" 
       aria-label="exercise name"
         type="text" 
-        formControlName="name"/>
+        formControlName="name"
+        data-cy = "exname"/>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -52,7 +55,8 @@
        type="text" 
        aria-label="exercise sets"
         placeholder="sets" 
-        formControlName="sets"/>
+        formControlName="sets"
+        data-cy = "sets"/>
     </mat-form-field>
     <mat-form-field>
         <input 
@@ -60,14 +64,15 @@
         type="text" 
         aria-label="exercise reps"
         placeholder="reps" 
-        formControlName="reps"/>
+        formControlName="reps"
+        data-cy = "reps"/>
     </mat-form-field>
   </div>
   <mat-error *ngIf="item.errors && item.get('name').touched">
       {{ getErrorMessage(item.errors) }}
     </mat-error>
 </div>
-  <button type="submit" mat-raised-button [disabled]='!trainingsSchema.valid'>
+  <button type="submit" mat-raised-button [disabled]='!trainingsSchema.valid' data-cy="add">
     add trainingsSchema
   </button>
 </form>

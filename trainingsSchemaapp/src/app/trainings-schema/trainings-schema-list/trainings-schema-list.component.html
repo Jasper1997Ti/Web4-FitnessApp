@@ -1,7 +1,13 @@
 <div fxLayout="column" fxLayoutGap="2%">
 <mat-card>
   <mat-form-field>
-    <input matInput (keyup)='filterTrainingsSchema$.next($event.target.value)' placeholder="filter trainingsschema name" type="text" [value]="filterTrainingsSchemaName"/>
+    <input 
+    matInput 
+    (keyup)='filterTrainingsSchema$.next($event.target.value)' 
+    placeholder="filter trainingsschema name" 
+    type="text" 
+    [value]="filterTrainingsSchemaName"
+    data-cy= "filterInput"/>
   </mat-form-field>
 
 </mat-card>
@@ -19,13 +25,13 @@ fxLayoutAlign="start"
     fxFlex="0 0 calc(25%-0.5%)"
     fxFlex.xs="100%"
   >
-    <app-trainings-schema [trainingsSchema]="trainingsSchema"></app-trainings-schema>
+    <app-trainings-schema [trainingsSchema]="trainingsSchema" data-cy="trainingsSchemaCard"></app-trainings-schema>
   </div>
 </div>
 </div>
 <ng-template #loadingOrError>
   <mat-card>
-   <mat-error  *ngIf="loadingError$ | async as errorMessage; else loading">
+   <mat-error data-cy="appError"  *ngIf="loadingError$ | async as errorMessage; else loading">
      Error loading the trainingsschema list: {{ errorMessage }}. <br/>
       Please try again later.
    </mat-error>
