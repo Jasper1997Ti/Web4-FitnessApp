@@ -24,7 +24,7 @@ import { httpInterceptorProviders } from './interceptors';
     BrowserAnimationsModule,
     HttpClientModule,
     UserModule,
-     TrainingsSchemaModule,
+    //  TrainingsSchemaModule,
      MaterialModule,
      AppRoutingModule
      

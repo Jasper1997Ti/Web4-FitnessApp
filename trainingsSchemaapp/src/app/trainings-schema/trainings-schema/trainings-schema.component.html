@@ -1,18 +1,25 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title><mat-icon>fitness_center</mat-icon>  {{ trainingsSchema.name }} </mat-card-title>
+    <mat-card-title><mat-icon>fitness_center</mat-icon>  {{ trainingsSchema?.name }} </mat-card-title>
     <mat-card-subtitle
-      >added on {{ trainingsSchema.dateAdded | date: longDate }}</mat-card-subtitle
+      >added on {{ trainingsSchema?.dateAdded | date: longDate }}</mat-card-subtitle
     >
     <mat-card-subtitle>
-      <app-rating [rating]="trainingsSchema.rating" #ratingComponent></app-rating>
-    </mat-card-subtitle>
-    <mat-card-subtitle>categorie {{ trainingsSchema.categorie }}</mat-card-subtitle>
+      <app-rating
+        [rating]="trainingsSchema?.rating"
+        (ratingClick)="adjustRating($event)"
+      ></app-rating
+    ></mat-card-subtitle>
+
+    <!-- <mat-card-subtitle>
+      <app-rating [rating]="trainingsSchema?.rating" #ratingComponent></app-rating>
+    </mat-card-subtitle> -->
+    <mat-card-subtitle>categorie {{ trainingsSchema?.categorie }}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <h3 mat-subheader>exercises</h3>
     <mat-list>
-      <mat-list-item *ngFor="let exercise of trainingsSchema.exercises">
+      <mat-list-item *ngFor="let exercise of trainingsSchema?.exercises">
         <app-exercise [exercise]="exercise"></app-exercise>
       </mat-list-item>
     </mat-list>

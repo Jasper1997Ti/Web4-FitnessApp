@@ -34,7 +34,7 @@ export class TrainingsSchemaListComponent implements OnInit {
           debounceTime(400)
       ).subscribe(val => {
         const params = val ? { queryParams: { filter: val } } : undefined;
-        this._router.navigate(['/TrainingsSchema/list'], params);
+        this._router.navigate(['/trainingsschema/list'], params);
       });
 
 

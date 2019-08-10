@@ -1,7 +1,7 @@
 <div fxLayout="column" fxLayoutGap="2%">
 <mat-card>
   <mat-form-field>
-    <input matInput (keyup)='filterTrainingsSchema$.next($event.target.value)' placeholder="filter trainingsschema name" type="text" [value]="filterRecipeName"/>
+    <input matInput (keyup)='filterTrainingsSchema$.next($event.target.value)' placeholder="filter trainingsschema name" type="text" [value]="filterTrainingsSchemaName"/>
   </mat-form-field>
 
 </mat-card>
@@ -15,7 +15,7 @@ fxLayoutAlign="start"
 
 <div 
     class="trainingsSchema"
-    *ngFor="let trainingsSchema of trainingsschemas | trainingsSchemaFilter: filterTrainingsSchemaName"
+    *ngFor="let trainingsSchema of trainingsSchemas | trainingsSchemaFilter: filterTrainingsSchemaName"
     fxFlex="0 0 calc(25%-0.5%)"
     fxFlex.xs="100%"
   >

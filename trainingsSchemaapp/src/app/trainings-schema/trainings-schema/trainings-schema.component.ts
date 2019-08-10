@@ -16,20 +16,34 @@ export class TrainingsSchemaComponent implements OnInit {
 
   constructor(private _trainingsSchemaDataService: TrainingsSchemaDataService) {}
 
-  ngOnInit() {
-    this.ratingComp.ratingChange$
-      .pipe(
-        switchMap(newRating => {
-          return this._trainingsSchemaDataService.rateTrainingsSchema(this.trainingsSchema, newRating);
-        })
-      )
-      .subscribe(
-        (newRating: number) => {
-          this.trainingsSchema.rating = newRating;
-        },
-        () => {
-          this.trainingsSchema.rating = 0;
-        }
-      );
+  ngOnInit() {}
+
+  adjustRating(clickObj: any): void {
+    this.trainingsSchema.rating = clickObj.rating;
+    this._trainingsSchemaDataService.rateTrainingsSchema(this.trainingsSchema, clickObj.rating).subscribe(
+      newRating => {
+        this.trainingsSchema.rating = newRating;
+      },
+      () => {
+        this.trainingsSchema.rating = 0;
+      }
+    );
+
+//   ngOnInit() {
+//     this.ratingComp.ratingChange$
+//       .pipe(
+//         switchMap(newRating => {
+//           return this._trainingsSchemaDataService.rateTrainingsSchema(this.trainingsSchema, newRating);
+//         })
+//       )
+//       .subscribe(
+//         (newRating: number) => {
+//           this.trainingsSchema.rating = newRating;
+//         },
+//         () => {
+//           this.trainingsSchema.rating = 0;
+//         }
+//       );
+// }
 }
 }

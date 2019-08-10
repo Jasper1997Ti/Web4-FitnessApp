@@ -6,13 +6,13 @@ private _rating: number;
 
     constructor(
       private _name: string,
-      private _created = new Date(),
       private _categorie : string,
-      private _exercises = new Array<Exercise>()      
+      private _exercises = new Array<Exercise>(),
+      private _created = new Date()     
     ) {}
 
     static fromJSON(json: any): TrainingsSchema {
-        const rec = new TrainingsSchema(json.name, json.created, json.categorie,json.exercises.map(Exercise.fromJSON));
+        const rec = new TrainingsSchema(json.name, json.categorie, json.created,json.exercises.map(Exercise.fromJSON));
         rec._id = json.id;
         return rec;
       }
@@ -20,9 +20,10 @@ private _rating: number;
         return {
           id : this._id,
           name: this.name,
-          created : this._created,
+          categorie: this.categorie,
           exercises: this.exercises.map(ex => ex.toJSON()),
-          categorie: this.categorie
+          created : this._created
+          
         };
       }
 
