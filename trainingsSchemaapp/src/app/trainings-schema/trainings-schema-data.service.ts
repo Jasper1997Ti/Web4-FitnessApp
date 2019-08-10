@@ -12,6 +12,7 @@ import { TrainingsSchema } from './trainingsSchema.model';
 export class TrainingsSchemaDataService {
   
   public loadingError$ = new Subject<string>();
+  
   constructor(private http: HttpClient){}
 
   rateTrainingsSchema(trainingsSchema: TrainingsSchema, rating: number): Observable<number> {

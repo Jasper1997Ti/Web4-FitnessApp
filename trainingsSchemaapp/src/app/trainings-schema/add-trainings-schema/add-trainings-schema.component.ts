@@ -72,7 +72,8 @@ export class AddTrainingsSchemaComponent implements OnInit {
     let exercises = this.trainingsSchema.value.exercises.map(Exercise.fromJSON);
     exercises = exercises.filter(ex => ex.name.length > 2);
 
-    this._trainingsSchemaDataService.addNewTrainingsSchema(new TrainingsSchema(this.trainingsSchema.value.name, this.trainingsSchema.value.categorie, exercises )).subscribe();
+    this._trainingsSchemaDataService.addNewTrainingsSchema(
+      new TrainingsSchema(this.trainingsSchema.value.name, this.trainingsSchema.value.categorie, exercises )).subscribe();
   }
 
  /* addTrainingsSchema(trainingsSchemaName: HTMLInputElement, trainingsSchemaCat: HTMLInputElement): boolean {

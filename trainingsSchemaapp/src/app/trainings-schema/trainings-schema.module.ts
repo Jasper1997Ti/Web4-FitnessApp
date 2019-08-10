@@ -11,11 +11,12 @@ import { TrainingsSchemaFilterPipe } from './trainings-schema-filter.pipe';
 import { TrainingsSchemaListComponent } from './trainings-schema-list/trainings-schema-list.component';
 import { TrainingsSchemaComponent } from './trainings-schema/trainings-schema.component';
 import { RatingComponent } from '../rating/rating.component';
+import { TrainingsSchemaResolver } from './trainings-schema-resolver';
 
 const routes: Routes = [
 { path: 'list', component: TrainingsSchemaComponent },
   { path: 'add', component: AddTrainingsSchemaComponent },
-  { path: ':id', component: TrainingsSchemaDetailComponent}
+  { path: ':id', component: TrainingsSchemaDetailComponent, resolve: { trainingsSchema: TrainingsSchemaResolver}}
 ]
 
 @NgModule({

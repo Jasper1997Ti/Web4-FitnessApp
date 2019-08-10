@@ -13,8 +13,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class TrainingsSchemaListComponent implements OnInit {
   public trainingsSchemas : TrainingsSchema[];
+
   public filterTrainingsSchemaName : string ='';
   public filterTrainingsSchema$ = new Subject<string>();
+  
   private _fetchTrainingsSchemas$: Observable<TrainingsSchema[]> 
     = this._trainingsSchemaDataService.trainingsschemas$;
     public loadingError$ = this._trainingsSchemaDataService.loadingError$;
@@ -64,7 +66,7 @@ export class TrainingsSchemaListComponent implements OnInit {
       });
     }
 
-  get trainingsschemas$() : Observable<TrainingsSchema[]>{
-    return this._fetchTrainingsSchemas$;
-  }
+  // get trainingsschemas$() : Observable<TrainingsSchema[]>{
+  //   return this._fetchTrainingsSchemas$;
+  // }
 }
