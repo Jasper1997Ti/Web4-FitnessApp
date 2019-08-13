@@ -1,1 +1,26 @@
-{{exercise.name}} {{exercise.sets}} {{exercise.reps}}
+<table mat-table  class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let exercise"> {{exercise.name}} </td>
+    </ng-container>
+  
+    <!-- Sets Column -->
+    <ng-container matColumnDef="weight">
+      <th mat-header-cell *matHeaderCellDef> Sets </th>
+      <td mat-cell *matCellDef="let exercise"> {{exercise.sets}} </td>
+    </ng-container>
+  
+    <!-- Reps Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Reps </th>
+      <td mat-cell *matCellDef="let exercise"> {{exercise.reps}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

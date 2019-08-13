@@ -14,7 +14,7 @@ import { RatingComponent } from '../rating/rating.component';
 import { TrainingsSchemaResolver } from './trainings-schema-resolver';
 
 const routes: Routes = [
-{ path: 'list', component: TrainingsSchemaComponent },
+{ path: 'list', component: TrainingsSchemaListComponent },
   { path: 'add', component: AddTrainingsSchemaComponent },
   { path: ':id', component: TrainingsSchemaDetailComponent, resolve: { trainingsSchema: TrainingsSchemaResolver}}
 ]

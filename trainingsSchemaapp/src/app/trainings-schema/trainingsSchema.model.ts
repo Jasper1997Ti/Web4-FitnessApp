@@ -7,8 +7,9 @@ private _rating: number;
     constructor(
       private _name: string,
       private _categorie : string,
-      private _exercises = new Array<Exercise>(),
-      private _created = new Date()     
+      private _created = new Date(),
+      private _exercises = new Array<Exercise>()
+           
     ) {}
 
     static fromJSON(json: any): TrainingsSchema {

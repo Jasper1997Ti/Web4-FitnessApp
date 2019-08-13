@@ -8,6 +8,7 @@ import { Exercise } from '../exercise.model';
 })
 export class ExerciseComponent implements OnInit {
 @Input() exercise: Exercise;
+displayedColumns: string[] = ['name', 'sets', 'reps'];
   constructor() { }
 
   ngOnInit() {

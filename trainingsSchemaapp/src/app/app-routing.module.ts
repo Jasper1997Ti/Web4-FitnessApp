@@ -1,8 +1,10 @@
+import { TrainingsSchemaComponent } from './trainings-schema/trainings-schema/trainings-schema.component';
 import { MaterialModule } from './material/material.module';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuardGuard } from './user/auth-guard.guard';
+
 
 const appRoutes: Routes = [
   {
@@ -19,8 +21,9 @@ const appRoutes: Routes = [
   declarations: [],
   imports: [
     RouterModule.forRoot(appRoutes,
-      {preloadingStrategy: PreloadAllModules}),
-      MaterialModule
+       {preloadingStrategy: PreloadAllModules}),
+
+    MaterialModule
   ],
   exports: [
     RouterModule

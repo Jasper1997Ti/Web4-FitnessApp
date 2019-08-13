@@ -13,7 +13,7 @@ export class TrainingsSchemaDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(item => (this.trainingsSchema = item['trainingsSchema']));
+    this.route.data.subscribe(item => (this.trainingsSchema = item['trainingsSchema']));
   }
 
 }

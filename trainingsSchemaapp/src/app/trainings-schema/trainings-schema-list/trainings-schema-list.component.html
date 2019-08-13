@@ -4,14 +4,14 @@
     <input 
     matInput 
     (keyup)='filterTrainingsSchema$.next($event.target.value)' 
-    placeholder="filter trainingsschema name" 
+    placeholder="filter" 
     type="text" 
     [value]="filterTrainingsSchemaName"
     data-cy= "filterInput"/>
   </mat-form-field>
 
 </mat-card>
-<div *ngIf="trainingsSchemas | async as trainingsschemas; else loadingOrError">
+<div *ngIf="trainingsSchemas as trainingsSchemas; else loadingOrError">
 
 <div fxLayout="row wrap"
 fxLayout.xs="column"
@@ -21,7 +21,7 @@ fxLayoutAlign="start"
 
 <div 
     class="trainingsSchema"
-    *ngFor="let trainingsSchema of trainingsSchemas | trainingsSchemaFilter: filterTrainingsSchemaName"
+    *ngFor="let trainingsSchema of trainingsSchemas"
     fxFlex="0 0 calc(25%-0.5%)"
     fxFlex.xs="100%"
   >

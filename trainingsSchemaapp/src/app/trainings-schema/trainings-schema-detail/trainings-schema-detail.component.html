@@ -1,22 +1,22 @@
 <mat-card>
         <mat-card-header>
           <mat-card-title>
-            <mat-icon>fitness_center</mat-icon> {{ trainingsSchema?.name }}</mat-card-title
+            <mat-icon>fitness_center</mat-icon> {{ trainingsSchema.name }}</mat-card-title
           >
           <mat-card-subtitle
-            >categorie {{ trainingsSchema?.categorie }}</mat-card-subtitle
+            >categorie {{ trainingsSchema.categorie }}</mat-card-subtitle
           >
         </mat-card-header>
         <mat-card-content>
           <h3 mat-subheader>exercises</h3>
           <mat-list>
-            <mat-list-item *ngFor="let exercise of trainingsSchema?.exercises">
+            <mat-list-item *ngFor="let exercise of trainingsSchema.exercises">
               <app-exercise [exercise]="exercise"></app-exercise>
             </mat-list-item>
           </mat-list>
         </mat-card-content>
         <mat-card-footer>
-          <a [routerLink]="['trainingsschema/', trainingsSchema?.id]">trainingsschema details</a>
+          <a [routerLink]="['trainingsschema/', trainingsSchema.id]">trainingsschema details</a>
           <!-- delete link (met confirmatie?) -->
         </mat-card-footer>
       </mat-card>
