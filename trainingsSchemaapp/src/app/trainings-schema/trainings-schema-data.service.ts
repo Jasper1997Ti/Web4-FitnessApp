@@ -66,10 +66,14 @@ export class TrainingsSchemaDataService {
       .put(`${environment.apiUrl}/TrainingsSchema/${trainingsSchema.id}`, trainingsSchema.toJSON()).pipe();
   }
 
-  deleteTrainingsSchema(trainingsSchema: TrainingsSchema) {
-    console.log("deleten");
-    return this.http
-      .delete(`${environment.apiUrl}/TrainingsSchema/${trainingsSchema.id}`);
+  // deleteTrainingsSchema(trainingsSchema: TrainingsSchema) {
+  //   console.log("deleten", trainingsSchema.id);
+  //   return this.http.delete(`${environment.apiUrl}/TrainingsSchema/${trainingsSchema.id}`);
+  // }
+
+  deleteTrainingsSchema(trainingsSchema: TrainingsSchema) : Observable<void> {
+    console.log("deleten", trainingsSchema.id);
+    return this.http.delete<void>(`${environment.apiUrl}/TrainingsSchema/${trainingsSchema.id}`).pipe();
   }
 
   getTrainingsSchemas$(name?: string, categorie?: string, exercise?: string) {

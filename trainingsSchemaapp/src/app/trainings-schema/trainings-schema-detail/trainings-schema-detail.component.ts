@@ -5,6 +5,8 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { TrainingsSchemaDataService } from '../trainings-schema-data.service';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Exercise } from '../exercise.model';
+import { MatDialog } from '@angular/material';
+import { ConfirmationDialogComponent } from 'src/app/dialog/confirmation-dialog/confirmation-dialog.component';
 
 // function validateExerciseName(control: FormGroup) : { [key: string]: any } {
 //   if (
@@ -24,14 +26,30 @@ import { Exercise } from '../exercise.model';
 export class TrainingsSchemaDetailComponent implements OnInit {
   public trainingsSchema: TrainingsSchema;
 
-  constructor(private route: ActivatedRoute,private _trainingsSchemaDataService : TrainingsSchemaDataService) { }
+  constructor(private route: ActivatedRoute,private _trainingsSchemaDataService : TrainingsSchemaDataService, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.route.data.subscribe(item => (this.trainingsSchema = item['trainingsSchema']));
   }
 
   deleteTrainingsSchema(){
-    this._trainingsSchemaDataService.deleteTrainingsSchema(this.trainingsSchema);
+    this._trainingsSchemaDataService.deleteTrainingsSchema(this.trainingsSchema).subscribe(
+      () => console.log('Trainingsschema met id = ${this.trainingsSchema.id} deleted'), (err) => console.log(err)
+    );
+  }
+  title = 'angular-confirmation-dialog';
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+      width: '350px',
+      data: "Do you confirm the deletion of this trainingsschema"
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        console.log('Yes clicked');
+        this.deleteTrainingsSchema();
+      }
+    });
   }
 
 //   public trainingsSchemaF : FormGroup;

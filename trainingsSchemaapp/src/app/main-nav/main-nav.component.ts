@@ -23,5 +23,6 @@ export class MainNavComponent {
 
     logout() {
       this._authenticationService.logout();
+      window.location.reload();
     }
 }
