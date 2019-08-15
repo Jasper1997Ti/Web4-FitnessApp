@@ -30,6 +30,10 @@ export class TrainingsSchemaDetailComponent implements OnInit {
     this.route.data.subscribe(item => (this.trainingsSchema = item['trainingsSchema']));
   }
 
+  deleteTrainingsSchema(){
+    this._trainingsSchemaDataService.deleteTrainingsSchema(this.trainingsSchema);
+  }
+
 //   public trainingsSchemaF : FormGroup;
 //   public trainingsSchema: TrainingsSchema;
 
@@ -113,7 +117,5 @@ export class TrainingsSchemaDetailComponent implements OnInit {
   
 // }
 
-deleteTrainingsSchema(){
-  this._trainingsSchemaDataService.deleteTrainingsSchema(this.trainingsSchema);
-}
+
 }
