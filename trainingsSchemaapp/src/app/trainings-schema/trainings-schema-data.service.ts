@@ -61,9 +61,15 @@ export class TrainingsSchemaDataService {
   }
 
   updateTrainingsSchema(trainingsSchema: TrainingsSchema) {
+    console.log("updaten", trainingsSchema.id);
     return this.http
-      .put(`${environment.apiUrl}/TrainingsSchema/${trainingsSchema.id}`, trainingsSchema.toJSON())
-      .pipe();
+      .put(`${environment.apiUrl}/TrainingsSchema/${trainingsSchema.id}`, trainingsSchema.toJSON()).pipe();
+  }
+
+  deleteTrainingsSchema(trainingsSchema: TrainingsSchema) {
+    console.log("deleten");
+    return this.http
+      .delete(`${environment.apiUrl}/TrainingsSchema/${trainingsSchema.id}`);
   }
 
   getTrainingsSchemas$(name?: string, categorie?: string, exercise?: string) {

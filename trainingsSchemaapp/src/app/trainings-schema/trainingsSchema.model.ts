@@ -46,8 +46,16 @@ private _rating: number;
     get exercises(): Exercise[] {
         return this._exercises
     }
+
+    set exercises(exercises: Exercise[]) {
+      this._exercises = exercises;
+    }
+
     get name(): string {
       return this._name;
+    }
+    set name(name: string) {
+      this._name = name;
     }
    
     addExercise(name: string, sets: number, reps: number) {
