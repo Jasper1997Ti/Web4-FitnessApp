@@ -86,7 +86,7 @@ public errorMsg: string;
               this.router.navigateByUrl(this.authService.redirectUrl);
               this.authService.redirectUrl = undefined;
             } else {
-              this.router.navigate(['/recipe/list']);
+              this.router.navigate(['/trainingsschema/list']);
             }
           } else {
             this.errorMsg = `Could not login`;

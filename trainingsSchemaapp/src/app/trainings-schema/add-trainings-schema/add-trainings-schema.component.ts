@@ -4,6 +4,7 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { Exercise } from './../exercise.model';
 import { TrainingsSchemaDataService } from './../trainings-schema-data.service';
 import { TrainingsSchema } from './../trainingsSchema.model';
+import { Router } from '@angular/router';
 
 function validateExerciseName(control: FormGroup) : { [key: string]: any } {
     if (
@@ -25,7 +26,7 @@ export class AddTrainingsSchemaComponent implements OnInit {
 
   public trainingsSchema : FormGroup;
 
-  constructor(private fb: FormBuilder, private _trainingsSchemaDataService : TrainingsSchemaDataService) {}
+  constructor(private fb: FormBuilder, private _trainingsSchemaDataService : TrainingsSchemaDataService,private _router: Router) {}
 
   get exercises() : FormArray {
     return <FormArray>this.trainingsSchema.get('exercises');
@@ -74,6 +75,8 @@ export class AddTrainingsSchemaComponent implements OnInit {
 
     this._trainingsSchemaDataService.addNewTrainingsSchema(
       new TrainingsSchema(this.trainingsSchema.value.name, this.trainingsSchema.value.categorie, exercises )).subscribe();
+
+      this.returnToList()
   }
 
  /* addTrainingsSchema(trainingsSchemaName: HTMLInputElement, trainingsSchemaCat: HTMLInputElement): boolean {
@@ -94,6 +97,10 @@ getErrorMessage(errors: any) {
       return `if sets is set you must set a name`;
     }
   
+}
+
+returnToList(){
+  this._router.navigate(['/trainingsschema/list']);
 }
 
 

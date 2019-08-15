@@ -1,13 +1,15 @@
 <mat-card>
-        <mat-card-header>
+  <mat-card-header>
+     <button mat-button (click)="returnToList()" ><mat-icon >keyboard_backspace</mat-icon>return</button>
+  </mat-card-header>
+  <br> <br>
+  <mat-card-content>
           <mat-card-title>
             <mat-icon>fitness_center</mat-icon> {{ trainingsSchema.name }}</mat-card-title
           >
           <mat-card-subtitle
             >categorie {{ trainingsSchema.categorie }}</mat-card-subtitle
           >
-        </mat-card-header>
-        <mat-card-content>
           <h3 mat-subheader>exercises</h3>
     <mat-list>
       <div class="container-table100">

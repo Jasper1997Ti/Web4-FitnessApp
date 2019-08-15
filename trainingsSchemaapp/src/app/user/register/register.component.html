@@ -110,14 +110,14 @@
           </span>
         </mat-card-content>
   
-        <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
-          <a [routerLink]="['/login']">login</a>
-  
+        <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center"> 
+
           <button
             mat-raised-button
             type="submit"
             color="primary"
             data-cy="register-button"
+            [disabled]="!user.valid"
           >
             Register
           </button>
