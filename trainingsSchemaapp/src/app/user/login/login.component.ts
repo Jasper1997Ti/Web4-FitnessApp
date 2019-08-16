@@ -54,13 +54,9 @@ export class LoginComponent implements OnInit {
         (err: HttpErrorResponse) => {
           console.log(err);
           if (err.error instanceof Error) {
-            this.errorMsg = `Error while trying to login user ${
-              this.user.value.username
-            }: ${err.error.message}`;
+            this.errorMsg = `Error while trying to login user `;
           } else {
-            this.errorMsg = `Error ${err.status} while trying to login user ${
-              this.user.value.username
-            }: ${err.error}`;
+            this.errorMsg = `Error ${err.status} while trying to login user, try again! `;
           }
         }
       );
