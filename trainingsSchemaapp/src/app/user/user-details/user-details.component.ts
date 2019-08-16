@@ -1,5 +1,9 @@
+import { User } from './../user.model';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TrainingsSchemaDataService } from 'src/app/trainings-schema/trainings-schema-data.service';
+import { Subject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-user-details',
@@ -9,36 +13,21 @@ import { AuthenticationService } from '../authentication.service';
 export class UserDetailsComponent implements OnInit {
 
 today = new Date();
+private _fetchUser$: Observable<User> 
+    = this._trainingsSchemaDataService.getUserDetails();
 
-  userService : AuthenticationService;
-
-  constructor(
-   private _firstName: string,
-   private _lastName: string,
-   private _email: string,
-   private _trainingsSchemas: string[]) { }
+  constructor(private _router : Router, private _trainingsSchemaDataService : TrainingsSchemaDataService) {
+   }
 
   ngOnInit() {
-//this.firstName = this.loggedInUser$
- this.userService.getUserDetails;
   }
 
-  static fromJSON(json: any): UserDetailsComponent {
-    const rec = new UserDetailsComponent(json.firstName, json.lastName, json.email,json.TrainingsSchemas);
-        return rec;
+  get user$(): Observable<User>{
+    return this._fetchUser$;
   }
 
-  get firstName() : string{
-    return this._firstName;
-  }
-  get lastName() : string{
-    return this._lastName;
-  }
-  get email() : string{
-    return this._email;
-  }
-  get trainingsSchemas() : string[]{
-    return this._trainingsSchemas;
+  returnToList(){
+    this._router.navigate(['/trainingsschema/list']);
   }
 }
 

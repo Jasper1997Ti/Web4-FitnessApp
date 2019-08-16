@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 import { AuthenticationService } from '../user/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-nav',
@@ -18,11 +19,16 @@ export class MainNavComponent {
 
     constructor(
       private breakpointObserver: BreakpointObserver,
-      private _authenticationService: AuthenticationService
+      private _authenticationService: AuthenticationService,
+      private _router : Router
     ) {}
 
     logout() {
       this._authenticationService.logout();
       window.location.reload();
+    }
+    
+    details(){
+      this._router.navigate(['/user']);
     }
 }

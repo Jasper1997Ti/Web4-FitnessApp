@@ -107,14 +107,5 @@ export class AuthenticationService {
       }
     );
   }
-
-  getUserDetails(): Observable<UserDetailsComponent>{
-      console.log(`${environment.apiUrl}/Trainee`);
-     return this.http.get(`${environment.apiUrl}/Trainee`).pipe(
-       map(
-         (item: any): UserDetailsComponent => UserDetailsComponent.fromJSON(item)          
-       )
-     );
-   }
   }
 

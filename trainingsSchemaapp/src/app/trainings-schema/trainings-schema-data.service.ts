@@ -5,6 +5,7 @@ import { map } from 'rxjs/internal/operators/map';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { TrainingsSchema } from './trainingsSchema.model';
+import { User } from '../user/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -89,4 +90,13 @@ export class TrainingsSchemaDataService {
       map((list: any[]): TrainingsSchema[] => list.map(TrainingsSchema.fromJSON))
     );
   }
+
+  getUserDetails(): Observable<User>{
+    console.log(`${environment.apiUrl}/Trainee`);
+   return this.http.get(`${environment.apiUrl}/Trainee`).pipe(
+     map(
+       (item: any): User => User.fromJSON(item)          
+     )
+   );
+ }
 }
