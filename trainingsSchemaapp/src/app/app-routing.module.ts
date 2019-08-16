@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuardGuard } from './user/auth-guard.guard';
+import { AgmCoreModule } from '@agm/core';
 
 
 const appRoutes: Routes = [
@@ -23,7 +24,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes,
        {preloadingStrategy: PreloadAllModules}),
 
-    MaterialModule
+    MaterialModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAzS7kCsOYrjOhnZRqdqyofdCZW3w-xzY4'
+    })
   ],
   exports: [
     RouterModule

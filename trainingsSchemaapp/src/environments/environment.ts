@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  apiUrl: '/api'
+  apiUrl: '/api',
+  // pusher: {
+  //   key: 'PUSHER_API_KEY',
+  //   cluster: 'PUSHER_CLUSTER',
+  // }
 };
 
 /*

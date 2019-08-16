@@ -4,13 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confirmation-dialog.component';
+import { httpInterceptorProviders } from './interceptors';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import { MapsModule } from './maps/maps/maps.module';
 import { MaterialModule } from './material/material.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TrainingsSchemaModule } from './trainings-schema/trainings-schema.module';
 import { UserModule } from './user/user.module';
-import { httpInterceptorProviders } from './interceptors';
-import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confirmation-dialog.component';
 
 
 
@@ -19,16 +19,18 @@ import { ConfirmationDialogComponent } from './dialog/confirmation-dialog/confir
     AppComponent,
     MainNavComponent,
     PageNotFoundComponent,
-    ConfirmationDialogComponent    
+    ConfirmationDialogComponent   
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     UserModule,
+    MapsModule,
     // TrainingsSchemaModule,
      MaterialModule,
      AppRoutingModule
+     
      
   ],
   entryComponents: [

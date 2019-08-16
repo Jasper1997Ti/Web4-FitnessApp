@@ -1,0 +1,36 @@
+<mat-card>
+    <mat-card-header>
+      <mat-card-title data-cy="userDetails-title"><mat-icon>person</mat-icon>  Userdetails </mat-card-title>
+      <mat-card-subtitle
+        >todays date {{ today | date: longDate }}</mat-card-subtitle
+      >  
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="row">
+          <div class="col-sm-6">
+              <div class="row mgbt-sx-0">
+              <label class="col-xs-5 control-label">First Name:</label>
+              <label class="col-xs-7 controls">{{UserDetails.firstName}}</label>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="row mgbt-sx-0">
+            <label class="col-xs-5 control-label">Last Name:</label>
+            <label class="col-xs-7 controls">{{UserDetails.lastName}}</label>
+          </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row mgbt-sx-0">
+            <label class="col-xs-5 control-label">Email:</label>
+            <label class="col-xs-7 controls">{{UserDetails.email}}</label>
+          </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="row mgbt-sx-0">
+            <label class="col-xs-5 control-label">Rated TrainingsSchemas</label>
+            <label class="col-xs-7 controls">{{UserDetails.trainingsSchemas}}</label>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 
 function parseJwt(token) {
@@ -106,4 +107,14 @@ export class AuthenticationService {
       }
     );
   }
-}
+
+  getUserDetails(): Observable<UserDetailsComponent>{
+      console.log(`${environment.apiUrl}/Trainee`);
+     return this.http.get(`${environment.apiUrl}/Trainee`).pipe(
+       map(
+         (item: any): UserDetailsComponent => UserDetailsComponent.fromJSON(item)          
+       )
+     );
+   }
+  }
+
